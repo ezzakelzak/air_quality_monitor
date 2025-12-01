@@ -86,7 +86,7 @@ def main():
     while True:
         print(f"Fetching data at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}...")
         
-        # Round to current hour in UTC
+        
         from datetime import timezone
         now_utc = datetime.now(timezone.utc)
         rounded_time = now_utc.replace(minute=0, second=0, microsecond=0)
@@ -98,7 +98,7 @@ def main():
                     "city": city['name'],
                     "latitude": city['latitude'],
                     "longitude": city['longitude'],
-                    "timestamp": rounded_time.isoformat(),  # UTC avec timezone
+                    "timestamp": rounded_time.isoformat(),  
                     "pm10": data['current']['pm10'],
                     "pm2_5": data['current']['pm2_5'],
                     "no2": data['current']['nitrogen_dioxide'],

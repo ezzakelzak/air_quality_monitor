@@ -20,15 +20,13 @@ FLAG_URL = "https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg"
 
 
 
-# Création de colonnes pour aligner l'image et le titre
-
-col_drapeau, col_titre = st.columns([1, 7]) # Le '1' est la largeur de la colonne drapeau
+col_drapeau, col_titre = st.columns([1, 7]) 
 
 
 
 with col_drapeau:
 
-    # Affichage de l'image du drapeau
+
 
     st.image(FLAG_URL, width=80)
 
@@ -36,7 +34,7 @@ with col_drapeau:
 
 with col_titre:
 
-    # Titre principal à côté
+
 
     st.title("Assistant Qualité de l'Air")
 
