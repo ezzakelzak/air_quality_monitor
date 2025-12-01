@@ -1,0 +1,24 @@
+# Secrets & Environment
+.env
+.venv
+venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.vscode/
+
+# Airflow
+# Ignore everything in airflow/
+airflow/*
+# Allow only dags/
+!airflow/dags/
+
+# dbt
+# Ignore everything in dbt_project/
+dbt_project/*
+# Allow only models/ and tests/
+!dbt_project/models/
+!dbt_project/tests/
+# Allow config files
+!dbt_project/dbt_project.yml
+!dbt_project/packages.yml

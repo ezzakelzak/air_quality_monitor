@@ -1,0 +1,34 @@
+version: 2
+
+sources:
+  - name: air_quality
+    database: ecologie_data
+    schema: public
+    tables:
+      - name: raw_measurements
+
+models:
+  - name: stg_measurements
+    description: "Cleaned air quality measurements"
+    columns:
+      - name: city
+        tests:
+          - not_null
+      - name: timestamp
+        tests:
+          - not_null
+      - name: pm10
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: pm2_5
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: aqi
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"

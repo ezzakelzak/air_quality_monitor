@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: mart_city_stats
+    description: "Daily aggregated statistics per city"
+    columns:
+      - name: city
+        tests:
+          - not_null
+      - name: measurement_day
+        tests:
+          - not_null
+      - name: max_aqi
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: mart_quality_classification
+    description: "Air quality classification based on AQI"
+    columns:
+      - name: quality_label
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Bon', 'Moyen', 'Médiocre']
+      - name: quality_label_en
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Good', 'Fair/Moderate', 'Poor']
+
+  - name: mart_latest_conditions
+    description: "Latest available measurement for each city"
+    columns:
+      - name: city
+        tests:
+          - unique
+          - not_null
